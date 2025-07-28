@@ -9,17 +9,25 @@ def main():
             if choice == "q":
                 break
             if choice=="1":
+                name=input("Name: ")
+                username=input("Username: ")
+                password=input("Password: ")
+                user_manager.register_user(name,username,password)
+            if choice=="2":
                 username=input("Username: ")
                 password=input("Password: ")
                 
                 current_user=user_manager.login(username, password)
-                if not current_user:
-                    print("invalid credentials")
-                    return
-                print(f"\nWelcome Name: {current_user['name']} Role: {current_user['role']}")
-                break
+                if current_user:              
+                    print(f"\nWelcome Name: {current_user['name']} Role: {current_user['role']}")
+                    break
+                elif choice == "0":
+                    print("Goodbye!")
+                    break
+
             else:
-                print("Invalid option\n")
+             print("❌ Invalid option")
+            
         except ValueError:
             print("An error occurred. Please try again.\n")
     

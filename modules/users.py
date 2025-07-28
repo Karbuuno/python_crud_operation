@@ -12,10 +12,24 @@ class Users:
             print(f)
         except FileNotFoundError:
             return []
-    ## save user to JSON data
-    def register_user(self):
+    ## register  user 
+    def register_user(self, name, username, password):
+        for user in self.users:
+           if user['username']==username:
+               print("username already exist")
+               return
+        new_user={
+               "name":name,
+               "username":username,
+               "password":password,
+               "role": "user",
+               "products": [] 
+           }
+        self.users.append(new_user)
+        ## save user data to json fle
         with open(self.file_path, "w") as f:
-            json.dumps(self.users,f,indent=4)  
+            json.dump(self.users,f,indent=4)  
+            print("user registered successfully")
 
     ## Get user data
     def login(self,username,password):
