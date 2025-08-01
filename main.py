@@ -1,6 +1,8 @@
 from modules.users import Users
+from modules.products import Products
 
 user_manager=Users()
+product_manager=Products()
 
 def main():
     choice=input("Enter option: ")
@@ -20,13 +22,13 @@ def main():
                 current_user=user_manager.login(username, password)
                 if current_user:              
                     print(f"\nWelcome Name: {current_user['name']} Role: {current_user['role']}")
+                    if current_user['role']=="user":
+                        product_manager.display_products()
                     break
                 elif choice == "0":
                     print("Goodbye!")
-                    break
+            break
 
-            else:
-             print("❌ Invalid option")
             
         except ValueError:
             print("An error occurred. Please try again.\n")
