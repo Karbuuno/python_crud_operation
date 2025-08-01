@@ -1,14 +1,8 @@
 [
-  {
-    "id": 1,
-    "name": "Smartphone",
-    "price": 500.0,
-    "status": "available"
-  },
-  {
-    "id": 2,
-    "name": "Tablet",
-    "price": 300.0,
-    "status": "available"
-  }
+    {
+        "id": "a728bb",
+        "name": "Iphone 16",
+        "price": 700,
+        "status": "available"
+    }
 ]

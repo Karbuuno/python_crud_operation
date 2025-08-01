@@ -24,6 +24,12 @@ def main():
                     print(f"\nWelcome Name: {current_user['name']} Role: {current_user['role']}")
                     if current_user['role']=="user":
                         product_manager.display_products()
+                    elif current_user['role']=="admin":
+                        name=input("Enter product name: ")
+                        price=int(input("Enter product price: "))
+                        product_manager.create_products(name,price)
+                        print(f"Product has been successfully created")
+
                     break
                 elif choice == "0":
                     print("Goodbye!")
