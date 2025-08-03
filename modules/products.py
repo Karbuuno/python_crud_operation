@@ -6,7 +6,7 @@ from modules.users import Users
 class Products:
     def __init__(self,file_path="data/products.json"):
         self.file_path=file_path
-        self.users=self.load_products()
+        self.products=self.load_products()
 
     def load_products(self):
         try:
@@ -15,6 +15,10 @@ class Products:
                                 
         except FileNotFoundError:
             return []
+        ## update products data
+    def save_products(self,products):
+        with open(self.file_path,"w") as f:
+            return json.dump(products, f,indent=4)
     ## display products
     def display_products(self):
         products=self.load_products()
@@ -33,9 +37,6 @@ class Products:
                 "status": "available"
             }
             products.append(new_product)
-
-
-            with open(self.file_path, "w") as f:
-                return json.dump(products,f,indent=
-                                 4)
+            ## save updating data in json file
+            self.save_products(products)
         

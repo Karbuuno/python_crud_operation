@@ -1,8 +1,14 @@
 [
     {
-        "id": "a728bb",
-        "name": "Iphone 16",
+        "id": "9b2129",
+        "name": "Iphone 15 puls",
         "price": 700,
+        "status": "available"
+    },
+    {
+        "id": "0e990b",
+        "name": "Iphone 16",
+        "price": 800,
         "status": "available"
     }
 ]

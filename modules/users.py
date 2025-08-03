@@ -12,6 +12,11 @@ class Users:
                 return json.load(f)
         except FileNotFoundError:
             return []
+        
+    ##  update user data
+    def save_user(self):
+        with open(self.file_path,"w") as f:
+            return json.dump(self.users, f,indent=4)
     ## register  user 
     def register_user(self, name, username, password):
         for user in self.users:
@@ -27,9 +32,10 @@ class Users:
            }
         self.users.append(new_user)
         ## save user data to json fle
-        with open(self.file_path, "w") as f:
-            json.dump(self.users,f,indent=4)  
-            print("user registered successfully")
+        self.save_user()
+        # with open(self.file_path, "w") as f:
+        #     json.dump(self.users,f,indent=4)  
+        #     print("user registered successfully")
 
     ## Get user data
     def login(self,username,password):

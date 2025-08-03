@@ -1,18 +1,25 @@
 [
-  {
-    "id": 1,
-    "name": "John",
-    "username": "john",
-    "password": "john123",
-    "role": "user",
-    "products": []
-  },
-  {
-    "id": 2,
-    "name": "Admin",
-    "username": "admin",
-    "password": "admin123",
-    "role": "admin",
-    "products": []
-  }
+    {
+        "id": 1,
+        "name": "John",
+        "username": "john",
+        "password": "john123",
+        "role": "user",
+        "products": []
+    },
+    {
+        "id": 2,
+        "name": "Admin",
+        "username": "admin",
+        "password": "admin123",
+        "role": "admin",
+        "products": []
+    },
+    {
+        "name": "Abdi",
+        "username": "abdi",
+        "password": "123",
+        "role": "user",
+        "products": []
+    }
 ]
