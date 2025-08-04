@@ -39,4 +39,32 @@ class Products:
             products.append(new_product)
             ## save updating data in json file
             self.save_products(products)
-        
+        ## updating products
+    def update_products(self,product_id,updated_name,updated_price):
+        products=self.load_products()
+        updated=False
+        for product in products:
+            if product["id"]==product_id:
+                if updated_name:
+                    product["name"]=updated_name
+                if updated_price:
+                    product["price"]=updated_price
+                updated=True
+                break
+        if updated:
+                self.save_products(products)
+                print(f"Product ID {product_id} has been updated successfully.\n")
+        else:
+                print("product not found")
+
+        ## Deleting products
+    def delete_products(self, product_id):
+        products=self.load_products()
+        products=[product for product in products if product["id"]!=product_id]
+        # for product in products:
+        #     if product["id"]==product_id:
+        #         products.remove(product)
+        self.save_products(products)
+        print(f"Product {product_id} deleted successfully.")
+                
+   
