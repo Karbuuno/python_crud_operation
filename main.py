@@ -8,7 +8,9 @@ def main():
     print("\n1. Register \n2. Login")
     choice=input("Enter option: ")
     while True:
+        
         try:
+            
             if choice == "q":
                 break
             if choice=="1":
@@ -21,6 +23,18 @@ def main():
                 password=input("Password: ")
                 
                 current_user=user_manager.login(username, password)
+            if current_user['role']=="user":
+                while True:
+                    print("\n1. View all products \n2. Buy product \n3. View my products \n0. Logout")
+                    user_choice=input("Select option: ")
+                    if user_choice=="1":
+                        product_manager.display_products()
+                    elif user_choice=="2":
+                        product_id = input("Enter product ID you want to buy: ")
+                        product_manager.buy_products(product_id,current_user['username'])
+                    elif user_choice=="3":
+                        product_manager.view_my_products(current_user['username'])
+
             if current_user['role'] == "admin":
                 while True:
                     print("\n1. Create product \n2. Update product \n3. Delete product \n4. View products \n0. Logout")
@@ -30,7 +44,7 @@ def main():
                         name = input("Enter product name: ")
                         price = int(input("Enter product price: "))
                         product_manager.create_products(name, price)
-                        print("✅ Product has been successfully created.\n")
+                        print("Product has been successfully created.\n")
                     
                     elif admin_choice == "2":
                         product_id = input("Enter product ID to update: ")

@@ -20,6 +20,12 @@
         "username": "abdi",
         "password": "123",
         "role": "user",
-        "products": []
+        "products": [
+            {
+                "id": "ba3983",
+                "name": "Samsung s3",
+                "price": 600
+            }
+        ]
     }
 ]

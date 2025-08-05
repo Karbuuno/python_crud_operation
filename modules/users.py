@@ -14,7 +14,8 @@ class Users:
             return []
         
     ##  update user data
-    def save_user(self):
+    def save_user(self, users):
+        self.users = users
         with open(self.file_path,"w") as f:
             return json.dump(self.users, f,indent=4)
     ## register  user 
@@ -32,7 +33,7 @@ class Users:
            }
         self.users.append(new_user)
         ## save user data to json fle
-        self.save_user()
+        self.save_user(user)
         # with open(self.file_path, "w") as f:
         #     json.dump(self.users,f,indent=4)  
         #     print("user registered successfully")

@@ -23,8 +23,14 @@ class Products:
     def display_products(self):
         products=self.load_products()
         print("All Products:")
-        for product in products:
-            print(f"{product['id']}: {product['name']} ${product['price']} {product['status']}")
+        if products:
+            for product in products:
+                if product['status']=="available":
+                    print(f"{product['id']}: {product['name']} ${product['price']} {product['status']}")
+            return
+        else:
+            print("There is no Products yet")
+    
     ##crete products
     def create_products(self, name,price):
             self.id=str(uuid.uuid4())[:6]
@@ -39,6 +45,47 @@ class Products:
             products.append(new_product)
             ## save updating data in json file
             self.save_products(products)
+
+
+
+        ## Buy products
+    def buy_products(self,product_id,username):
+         products=self.load_products()
+         users=Users().load_users()
+         for product in products:
+            if product['id']==product_id:
+                
+                for user in users:
+                    if user['username']==username and user['role']=="user":
+                        product['status']="sold"
+                        user['products'].append({
+                            "id":product['id'],
+                            "name":product['name'],
+                            "price":product['price']
+                        })
+                        self.save_products(products)
+                        Users().save_user(users)
+                        print(f"You have successfully bought '{product['name']}'\n")
+                        return
+
+                print("User not found.\n")
+                return
+
+            print("Product not found.\n")
+    
+
+    ## View my products
+    def view_my_products(self, username):
+        users=Users().load_users()
+        # Products=self.load_products()
+        for user in users:
+            user['username']==username
+            for product in user['products']:
+                print("Your Products")
+                print(f"{user['products']['name']}: {user['product']['price']} ")
+            else:
+                print("There is no products")
+            return
         ## updating products
     def update_products(self,product_id,updated_name,updated_price):
         products=self.load_products()
