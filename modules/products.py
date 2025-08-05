@@ -50,11 +50,10 @@ class Products:
 
         ## Buy products
     def buy_products(self,product_id,username):
-         products=self.load_products()
-         users=Users().load_users()
-         for product in products:
+        products=self.load_products()
+        users=Users().load_users()
+        for product in products:
             if product['id']==product_id:
-                
                 for user in users:
                     if user['username']==username and user['role']=="user":
                         product['status']="sold"
@@ -67,11 +66,10 @@ class Products:
                         Users().save_user(users)
                         print(f"You have successfully bought '{product['name']}'\n")
                         return
-
+                    
                 print("User not found.\n")
                 return
-
-            print("Product not found.\n")
+        print("Product not found.\n")
     
 
     ## View my products
@@ -79,13 +77,14 @@ class Products:
         users=Users().load_users()
         # Products=self.load_products()
         for user in users:
-            user['username']==username
-            for product in user['products']:
-                print("Your Products")
-                print(f"{user['products']['name']}: {user['product']['price']} ")
-            else:
-                print("There is no products")
-            return
+            if user['username']==username:
+                if user['products']:
+                    print("Your Products")
+                    for product in user['products']:
+                        print(f"{product['name']}: {product['price']} ")
+                else:
+                    print("There is no products")
+                    return
         ## updating products
     def update_products(self,product_id,updated_name,updated_price):
         products=self.load_products()
