@@ -5,14 +5,13 @@ user_manager=Users()
 product_manager=Products()
 
 def main():
-    print("\n1. Register \n2. Login")
-    choice=input("Enter option: ")
+    
     while True:
-        
+        print("\n1. Register \n2. Login")
+        choice=input("Enter option: ")
         try:
             
-            if choice == "q":
-                break
+            
             if choice=="1":
                 name=input("Name: ")
                 username=input("Username: ")
@@ -23,9 +22,12 @@ def main():
                 password=input("Password: ")
                 
                 current_user=user_manager.login(username, password)
+            if current_user is None:
+                print("Invalid username or password. Please try again.\n")
+                continue 
             if current_user['role']=="user":
                 while True:
-                    print("\n1. View all products \n2. Buy product \n3. View my products \n0. Logout")
+                    print("\n1. View all products \n2. Buy product \n3. View my products \n4. View my profile \n0. Logout")
                     user_choice=input("Select option: ")
                     if user_choice=="1":
                         product_manager.display_products()
@@ -34,6 +36,17 @@ def main():
                         product_manager.buy_products(product_id,current_user['username'])
                     elif user_choice=="3":
                         product_manager.view_my_products(current_user['username'])
+                    elif user_choice=="4":
+                        user_manager.user_profile(current_user['username'])
+                        while True:
+                            print("\n1. Update profile \n2. Delete yor account ")
+                            user_choice=input("Select option: ")
+                            if user_choice=="1":
+                                new_name=input("Enter your new name: ")
+                                new_username=input("Enter your new username: ")
+                                new_password=input("Enter your new password: ")
+                                user_manager.update_user_profile(current_user['username'],new_name,new_username,new_password)
+
 
             if current_user['role'] == "admin":
                 while True:

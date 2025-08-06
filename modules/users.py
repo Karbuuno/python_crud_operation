@@ -45,5 +45,27 @@ class Users:
              return user
         print("Invalid username or password.")
         return None
-                
+
+    ## User Profile
+    def user_profile(self,username):
+        users=self.load_users()
+        for user in users:
+            if user['username']==username:
+                print("Your Profile")
+                print(f"name: {user['name']} Username: {user['username']}")
+                return user
+        print("There is no user found")
+
+        ## Update user profile
+
+    def update_user_profile(self,username, new_name,new_username,new_password ):
+        users=self.load_users()
+        for user in users:
+            if user['username']==username:
+                user["name"]=new_name
+                user["username"]=new_username
+                user["password"]=new_password
+                print(f"Your name and your username has been updated")
+                self.save_user(users)
+
 
