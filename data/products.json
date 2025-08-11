@@ -9,12 +9,12 @@
         "id": "ba3984",
         "name": "Iphone 14",
         "price": 600,
-        "status": "available"
+        "status": "sold"
     },
     {
         "id": "ba3985",
         "name": "Iphone 16",
         "price": 600,
-        "status": "available"
+        "status": "sold"
     }
 ]
