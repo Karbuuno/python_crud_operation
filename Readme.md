@@ -41,4 +41,4 @@ Supports both **user** and **admin** roles with authentication.
 
 ### Screenshots.
 
-![alt user_page](/images/usre_page.png)
+![alt user_page](/images/user_page.png)
